@@ -19,14 +19,14 @@ import java.util.UUID;
  * @author Ture Bentzin
  * 04.02.2023
  */
-public class TeamChatLoginCommand {
+public class TeamChatLogoutCommand {
 
-    private TeamChatLoginCommand() {
+    private TeamChatLogoutCommand() {
     }
 
     public static @NotNull BrigadierCommand createBrigadierCommand(final @NotNull TeamChatPlugin teamChatPlugin) {
         ProxyServer proxy = teamChatPlugin.getServer();
-        LiteralCommandNode<CommandSource> node = LiteralArgumentBuilder.<CommandSource>literal("tclogin")
+        LiteralCommandNode<CommandSource> node = LiteralArgumentBuilder.<CommandSource>literal("tclogout")
                 .requires(source -> source.hasPermission("teamchat.use"))
                 .requires(commandSource -> commandSource.pointers().supports(Identity.UUID))
                 .executes(context -> {
@@ -36,11 +36,12 @@ public class TeamChatLoginCommand {
                     if (identity != null) {
                         //we have a identifiable audience here... so far so good
                         if (teamChatPlugin.teamChatters().contains(identity)) {
-                            API.get().getMessageApi().sendMessage("teamchat.already", AudienceMessageRecipient.getByPointer(source));
-                        } else {
-                            teamChatPlugin.teamChatters().add(identity);
-                            API.get().getMessageApi().sendMessage("teamchat.login", AudienceMessageRecipient.getByPointer(source));
+                            teamChatPlugin.teamChatters().remove(identity);
+                            API.get().getMessageApi().sendMessage("teamchat.logout", AudienceMessageRecipient.getByPointer(source));
                             teamChatPlugin.sendJoinMessage(source.get(Identity.NAME).orElseThrow());
+                        } else {
+                            API.get().getMessageApi().sendMessage("teamchat.failure", AudienceMessageRecipient.getByPointer(source));
+
                         }
                     } else {
                         return 0;
