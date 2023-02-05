@@ -4,14 +4,43 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>net.juligames</groupId>
     <artifactId>TeamChat</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>juligames-juligames</id>
+            <name>Juligames Maven</name>
+            <url>https://maven.juligames.net/juligames</url>
+        </repository>
+    </repositories>
+
+    <!--suppress VulnerableLibrariesLocal -->
+    <dependencies>
+        <dependency>
+            <groupId>com.velocitypowered</groupId>
+            <artifactId>velocity-api</artifactId>
+            <version>3.1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.juligames.core</groupId>
+            <artifactId>VelocityAPI</artifactId>
+            <version>1.2-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>
