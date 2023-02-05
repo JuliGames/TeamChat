@@ -65,8 +65,8 @@ public class TeamChatPlugin {
         messageApi.registerMessage("teamchat.failure","<teamchat_prefix><red>You are not logged in!");
         messageApi.registerMessage("teamchat.already","<teamchat_prefix><red>You are logged in already!");
         messageApi.registerMessage("teamchat.message","<teamchat_prefix><gold>@{0}: <gray>{1}");
-        messageApi.registerMessage("teamchat.join","<teamchat_prefix><green> + <gold>{0}}");
-        messageApi.registerMessage("teamchat.leave","<teamchat_prefix><red> - <gold>{0}}");
+        messageApi.registerMessage("teamchat.join","<teamchat_prefix><green> + <gold>{0}");
+        messageApi.registerMessage("teamchat.leave","<teamchat_prefix><red> - <gold>{0}");
 
 
         messageApi.registerMessage("teamchat.info.divider","<dark_gray>---------------------------------------");

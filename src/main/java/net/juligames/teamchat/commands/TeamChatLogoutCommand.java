@@ -38,7 +38,7 @@ public class TeamChatLogoutCommand {
                         if (teamChatPlugin.teamChatters().contains(identity)) {
                             teamChatPlugin.teamChatters().remove(identity);
                             API.get().getMessageApi().sendMessage("teamchat.logout", AudienceMessageRecipient.getByPointer(source));
-                            teamChatPlugin.sendJoinMessage(source.get(Identity.NAME).orElseThrow());
+                            teamChatPlugin.sendLeaveMessage(source.get(Identity.NAME).orElseThrow());
                         } else {
                             API.get().getMessageApi().sendMessage("teamchat.failure", AudienceMessageRecipient.getByPointer(source));
 
